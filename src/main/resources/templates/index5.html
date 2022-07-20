@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Control de Equipos GPS</title>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <a class="navbar-brand" href="/">Control de Sistema</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item">
+                <a class="nav-link" href="/nuevo5">Agregar Equipo GPS</a>
+            </li>
+
+
+        </ul>
+
+    </div>
+</nav>
+<br>
+<div class="container text-center">
+    <form class="form-inline" th:action="@{/5}">
+        <div class="form-group mb-2">
+            <label>Buscar:</label>
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
+            <input type="text" name="palabraClave" class="form-control" id="palabraClave" th:value="${palabraClave}"
+                   placeholder="Ingrese serie o equipo a buscar..." required>
+        </div>
+        <input type="submit" class="btn btn-info mb-2" value="Buscar">
+        &nbsp;&nbsp;
+        <input type="button" class="btn btn-secondary mb-2" value="Limpiar" onclick="limpiarCampos()">
+    </form>
+    <br>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Equipo</th>
+            <th scope="col">IMEI</th>
+            <th scope="col">Num. de Chip</th>
+            <th scope="col">Serie</th>
+            <th scope="col">Costo</th>
+            <th scope="col">Observacion</th>
+            <th scope="col">Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="equipos : ${listaEquipos}">
+
+            <td th:text="${equipos.id}"></td>
+            <td th:text="${equipos.equipo}"></td>
+            <td th:text="${equipos.imei}"></td>
+            <td th:text="${equipos.chip}"></td>
+            <td th:text="${equipos.serie}"></td>
+            <td th:text="${equipos.costo}"></td>
+            <td th:text="${equipos.observacion}"></td>
+
+            <td>
+                <a class="btn btn-primary" th:href="@{'/editar5/' + ${equipos.id}}">Editar</a>
+                &nbsp;
+                <a class="btn btn-danger" th:href="@{'/eliminar5/' + ${equipos.id}}">Eliminar</a>
+            </td>
+        </tr>
+
+
+        </tbody>
+    </table>
+
+    <br>
+</div>
+<script type="text/javascript">
+    function limpiarCampos() {
+        window.location = '/5';
+    }
+</script>
+
+
+</body>
+</html>

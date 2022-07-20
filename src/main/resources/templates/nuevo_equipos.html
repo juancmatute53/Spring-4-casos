@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Agregar Equipos GPS</title>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <a class="navbar-brand" href="/5">Control de Sistema</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+
+        </ul>
+
+    </div>
+</nav>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-lo-6 col-md-6 col-sm-6 container justify-content-center card">
+            <h3 class="text-center">Registro de Equipo GPS</h3>
+            <div class="card-body">
+                <form th:action="@{/guardar5}" th:object="${equipos}" method="post">
+                    <div class="form-group">
+                        <label>Equipos:</label>
+                        <input type="text" name="equipos" th:field="*{equipo}" class="form-control"
+                               placeholder="Ingrese un equipo" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Imei:</label>
+                        <input type="text" name="imei" th:field="*{imei}" class="form-control"
+                               placeholder="Ingrese imei" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Chip:</label>
+                        <input type="number" name="chip" th:field="*{chip}" class="form-control"
+                               placeholder="Ingrese Chip" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Serie:</label>
+                        <input type="text" name="serie" th:field="*{serie}" class="form-control"
+                               placeholder="Ingrese serie" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Costo:</label>
+                        <input type="number" name="costo" th:field="*{costo}" class="form-control"
+                               placeholder="Ingrese costo" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Observacion:</label>
+                        <input type="text" name="observacion" th:field="*{observacion}" class="form-control"
+                               placeholder="Ingrese observacion" required>
+                    </div>
+
+                    <div class="box-footer">
+                        <button class="btn btn-success">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
